@@ -1,22 +1,51 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { MDBDataTable } from 'mdbreact'
+import { Table, Space, Tag, Button, Divider, Row, Col, Layout, Menu } from 'antd';
 import Axios from 'axios'
+
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    render: text => <a>{text}</a>,
+  },
+  {
+    title: 'Professor Id',
+    dataIndex: 'professor_id',
+    key: 'professor_id',
+  },
+  {
+    title: 'Action',
+    key: 'action',
+    render: (text, record) => (
+      <Space size="middle">
+        <a href="">Crear</a>
+        <a href="">Eliminar</a>
+      </Space>
+    ),
+  },
+];
 
 export class Index extends Component {
   constructor() {
     super()
     this.state = {
-      data: {
-        rows: []
-      }
+      data: []
     }
   }
   
   componentDidMount() {
-    Axios.get('https://keobra.ukko.mx/api/v1/cities').
+    Axios.get('https://reqres.in/api/users?page=2').
     then(data => {
       console.log(data)
+      var data = [{
+        "key": '2',
+        "name": "Adios",
+        "professor_id": "1"
+      }]
+      this.setState({data: 
+        data
+      })
     }).
     catch(err => {
       console.log(err)
@@ -25,7 +54,14 @@ export class Index extends Component {
 
   render() {
     return (
-      <p>Hola</p>
+      <div>
+        <Row style={{margin: '15px'}} orientation="right">
+          <Col offset = {22}>
+            <Button href="/tests" type="primary"> Crear </Button>
+          </Col>
+        </Row>
+        <Table columns={columns} dataSource={this.state.data} />
+      </div>
     )
   }
 }
