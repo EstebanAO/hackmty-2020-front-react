@@ -51,9 +51,9 @@ export class Question extends Component {
   constructor() {
     super()
     this.state = {
-      countdown: 10,
+      countdown: 30,
       started_at_in_epoch: 0,
-      query: "Como me llamo?",
+      query: "",
       option_a: "",
       option_b: "",
       option_c: "",
@@ -64,10 +64,12 @@ export class Question extends Component {
   }
 
   componentDidMount() {
-    axios.get(API_URL + '/question').then(res => {
-      res['countdown'] = 30
-      res['is_correct'] = [true, true, true, true]
-      this.setState(res)
+    const quiz_id = this.props.match.params.id
+    axios.get(API_URL + '/quizzes/' + quiz_id + '/next_question').then(res => {
+      let data = res.data
+      data['countdown'] = 30
+      data['is_correct'] = [true, true, true, true]
+      this.setState(data)
       this.interval = setInterval(() => {
         if (this.state.countdown !== 0) {
           this.setState({['countdown']: this.state.countdown - 1})
