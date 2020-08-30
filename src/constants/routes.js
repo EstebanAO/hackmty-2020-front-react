@@ -1,5 +1,5 @@
-export const API_URL = 'http://143d6d7c2dc5.ngrok.io';
-export const SERVER_URL = 'http://e0ccfb637c86.ngrok.io';
+export const API_URL = 'http://43ceb076a906.ngrok.io/';
+export const SERVER_URL = 'http://69d546284071.ngrok.io/';
 export const BASE = '/';
 export const TEST_INDEX = '/tests/';
 export const TEST_LOBBY = '/lobby/:id';
