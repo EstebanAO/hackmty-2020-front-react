@@ -21,7 +21,7 @@ const columns = [
     key: 'action',
     render: (text, record) => (
       <Space size="middle">
-        <Link to="/lobby/{{record.id}}" style={{color: "#b87700"}}>Comenzar</Link>
+        <Link to={'/lobby/' + record.id} style={{color: "#b87700"}}>Comenzar</Link>
       </Space>
     ),
   },
