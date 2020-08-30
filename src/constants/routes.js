@@ -1,4 +1,4 @@
-export const API_URL = 'http://43ceb076a906.ngrok.io/';
+export const API_URL = 'http://9df040b533d9.ngrok.io/';
 export const SERVER_URL = 'http://69d546284071.ngrok.io/';
 export const BASE = '/';
 export const TEST_INDEX = '/tests/';
