@@ -3,3 +3,4 @@ export const BASE = '/';
 export const TEST_INDEX = '/tests/';
 export const TEST_SHOW = '/tests/:id';
 export const TEST_NEW = '/new_test';
+export const TEST_LEADERBOARD = '/tests/:id/leaderboard';

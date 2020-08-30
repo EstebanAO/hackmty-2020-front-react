@@ -11,6 +11,7 @@ import TestIndex from './components/tests'
 import TestShow from './components/tests/show'
 import HeaderTag from './components/layouts/header'
 import TestNew from './components/tests/new'
+import TestLeaderboard from './components/tests/leaderboard'
 
 
 
@@ -24,6 +25,7 @@ function App() {
             <Route exact path={ROUTES.TEST_INDEX} component={TestIndex} />
             <Route exact path={ROUTES.TEST_SHOW} component={TestShow} />
             <Route exact path={ROUTES.TEST_NEW} component={TestNew} />
+            <Route exact path={ROUTES.TEST_LEADERBOARD} component={TestLeaderboard} />
           </Switch>
         </Router>
     </div>
