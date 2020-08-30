@@ -12,6 +12,7 @@ import TestShow from './components/tests/show'
 import HeaderTag from './components/layouts/header'
 import TestNew from './components/test_form'
 import Lobby from './components/tests/lobby'
+import TestNew from './components/tests/new'
 
 
 
