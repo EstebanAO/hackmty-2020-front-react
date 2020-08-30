@@ -7,33 +7,6 @@ import { ExportToCsv } from 'export-to-csv';
 
 const fetch = require('node-fetch');
 
-const saveResults = (quizID, dateString) => {
-    fetch(ROUTES.API_URL + 'quiz_sessions/' + quizID + '/results', {
-        method: 'GET',
-    }).
-    then(res => res.json()).
-    then((result) => {
-        console.log(result)
-        const options = { 
-            fieldSeparator: ',',
-            quoteStrings: '"',
-            decimalSeparator: '.',
-            showLabels: true, 
-            showTitle: true,
-            title: dateString,
-            useTextFile: false,
-            useBom: true,
-            useKeysAsHeaders: true,
-            // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
-        };
-        const csvExporter = new ExportToCsv(options);
-        csvExporter.generateCsv(result);
-    }).
-    catch(function(err) {
-        console.error(err);
-    });
-}
-
 const columns = [
   {
     title: 'ID',
@@ -51,7 +24,33 @@ const columns = [
     key: 'action',
     render: (text, record) => (
       <Space size="middle">
-        <Link onclick={saveResults(record.quiz_id, record.created_at)}>Descargar</Link>
+        <Link onClick={() => {
+            fetch(ROUTES.API_URL + '/quiz_sessions/' + record.quiz_id + '/results', {
+                method: 'GET',
+            }).
+            then(res => res.json()).
+            then((result) => {
+                console.log(result)
+                const options = { 
+                    fieldSeparator: ',',
+                    quoteStrings: '"',
+                    decimalSeparator: '.',
+                    filename: record.created_at,
+                    showLabels: true, 
+                    showTitle: true,
+                    title: record.created_at,
+                    useTextFile: false,
+                    useBom: true,
+                    useKeysAsHeaders: true,
+                    // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
+                };
+                const csvExporter = new ExportToCsv(options);
+                csvExporter.generateCsv(result);
+            }).
+            catch(function(err) {
+                console.error(err);
+            })
+        }}>Descargar</Link>
         <Link>Ver</Link>
       </Space>
     ),
