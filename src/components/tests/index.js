@@ -40,11 +40,14 @@ export class Index extends Component {
     fetch(ROUTES.API_URL + '/quizzes', {
       method: 'GET',
     }).
-    then(res => {
-      return res.json();
+    then(res => res.json()).
+    then((result) => {
+      this.setState({data: result})
+      console.log(result)
     }).
-    then(j => console.error(j)).
-    catch(err => console.error(err));
+    catch(function(err) {
+      console.error(err);
+    });
   }
 
   render() {
@@ -52,7 +55,7 @@ export class Index extends Component {
       <div>
         <Row style={{margin: '15px'}} orientation="right">
           <Col offset = {22}>
-            <Button href="/tests" type="primary"> Crear </Button>
+            <Button href="/new_test" type="primary"> Crear </Button>
           </Col>
         </Row>
         <Table columns={columns} dataSource={this.state.data} />
