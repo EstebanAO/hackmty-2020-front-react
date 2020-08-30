@@ -36,6 +36,7 @@ export class Show extends Component {
     }).
     then(res => res.json()).
     then((result) => {
+      console.error(result);
       this.setState({data: result})
       console.log(result)
     }).
