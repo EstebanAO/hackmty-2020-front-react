@@ -4,6 +4,11 @@ import * as ROUTES from '../../constants/routes';
 import { Row, Col, Button, Layout } from 'antd';
 import Axios from 'axios'
 
+import track1 from '../../assets/music/track1.mp3';
+
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+
 import logo from '../../assets/img/beeready.png';
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -49,7 +54,7 @@ export class Lobby extends Component {
     
     componentDidMount() {
         const data = {
-            "exam_id": 1,
+            "exam_id": this.props.match.params.id,
             "num_questions": 0,
             "questions": [],
         }
@@ -60,7 +65,7 @@ export class Lobby extends Component {
           console.log(err)
         )
 
-        Axios.post(ROUTES.SERVER_URL + '/start', JSON.stringify(data), {
+        Axios.post(ROUTES.SERVER_URL + 'start', JSON.stringify(data), {
             headers: {
                 // Overwrite Axios's automatically set Content-Type
                 'Content-Type': 'application/json'
@@ -86,6 +91,15 @@ export class Lobby extends Component {
 
     render() { return (
         <>
+            <div style={{"display": "none"}}>
+                <AudioPlayer
+                    autoPlay
+                    src={track1}
+                    onPlay={e => console.log("onPlay")}
+                    loop
+                    // other props here
+                />
+            </div>
             <Layout>
                 <Content style={{
                     "background": "white"

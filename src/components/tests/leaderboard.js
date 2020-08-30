@@ -24,7 +24,7 @@ export class Leaderboard extends Component {
   }
 
   populateStudents() {
-    fetch(ROUTES.API_URL + 'quizzes/' + this.props.match.params.id + '/leaderboard', {
+    fetch(ROUTES.API_URL + '/quizzes/' + this.props.match.params.id + '/leaderboard', {
       method: 'GET',
     }).
     then(res => res.json()).

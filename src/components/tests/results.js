@@ -25,7 +25,7 @@ const columns = [
     render: (text, record) => (
       <Space size="middle">
         <Link onClick={() => {
-            fetch(ROUTES.API_URL + '/quiz_sessions/' + record.quiz_id + '/results', {
+            fetch(ROUTES.API_URL + '/quiz_sessions/' + record.id + '/results', {
                 method: 'GET',
             }).
             then(res => res.json()).

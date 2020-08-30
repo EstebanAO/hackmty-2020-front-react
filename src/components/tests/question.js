@@ -3,6 +3,11 @@ import { Typography, Row, Col, Space } from 'antd'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
+import track1 from '../../assets/music/track1.mp3';
+
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+
 import { API_URL } from '../../constants/routes'
 
 const { Title } = Typography
@@ -121,6 +126,15 @@ export class Question extends Component {
     }
     return (
       <>
+        <div style={{"display": "none"}}>
+          <AudioPlayer
+            autoPlay
+            src={track1}
+            onPlay={e => console.log("onPlay")}
+            loop
+            // other props here
+          />
+        </div>
         <Row style={questionStyle}>
           <Col offset={5} span={14}>
             <Title style={{textAlign: 'center', margin: '30px'}}>{this.state.query}</Title>
