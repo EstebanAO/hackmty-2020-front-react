@@ -38,8 +38,8 @@ export class Lobby extends Component {
             }
             
             this.setState({
-                studentsList: [students],
-                studentsLength: studentsData.length
+                ['studentsList']: [students],
+                ['studentsLength']: studentsData.length
             })
         }).
         catch(err => {
@@ -54,6 +54,12 @@ export class Lobby extends Component {
             "questions": [],
         }
 
+        Axios.get(ROUTES.API_URL + '/quizzes/' + this.props.match.params.id + '/start').then(res => 
+          console.log('Started quiz')
+        ).catch(err =>
+          console.log(err)
+        )
+
         Axios.post(ROUTES.SERVER_URL + '/start', JSON.stringify(data), {
             headers: {
                 // Overwrite Axios's automatically set Content-Type
@@ -61,14 +67,14 @@ export class Lobby extends Component {
             }
         }).then(data => {
             this.setState({
-                roomCode: data.data.sms_id
+                ['roomCode']: data.data.sms_id
             })
         }).catch(err => {
             console.log(err)
         })
 
         this.setState({
-            questionRedirect: '/question/' + this.props.match.params.id
+            ['questionRedirect']: '/question/' + this.props.match.params.id
         })
 
         this.loadStudents(this.props.match.params.id);
