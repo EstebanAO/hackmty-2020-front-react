@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Link } from 'antd';
 
+import logo from '../../assets/img/beeready_icon.png';
+
 const { Header, Content, Footer } = Layout;
 
 export class HeaderTag extends Component {
@@ -8,9 +10,12 @@ export class HeaderTag extends Component {
     return (
       <div>
         { ['leaderboard', 'lobby', 'winner', 'question'].includes(this.props.path.split('/')[1]) ? '' :  
-          <Header style={{zIndex: 1, width: '100%' }}>
-            <div className="logo" />
-            <Menu theme="dark" mode="horizontal">
+          <Header style={{zIndex: 1, width: '100%', "background-color": "#1890ff"}}>
+            
+            <Menu theme="dark" mode="horizontal" style={{"background-color": "#1890ff"}}>
+              <Menu.Item key="0">
+                <img src={logo}></img>
+              </Menu.Item>
               <Menu.Item key="1">
                 <a href="/">Inicio</a>
               </Menu.Item>
