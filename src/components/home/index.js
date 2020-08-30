@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Row } from 'antd';
 
 export class Index extends Component {
   constructor() {
@@ -15,7 +16,11 @@ export class Index extends Component {
 
   render() {
     return (
-      <p>Hola</p>
+      <Row style={{margin: '15px'}}>
+        <h1>
+          Inicio
+        </h1>
+      </Row>
     )
   }
 }
