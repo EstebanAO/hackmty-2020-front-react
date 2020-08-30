@@ -21,8 +21,6 @@ const columns = [
     render: (text, record) => (
       <Space size="middle">
         <a href="">Comenzar</a>
-        <a href="">Crear</a>
-        <a href="">Eliminar</a>
       </Space>
     ),
   },
