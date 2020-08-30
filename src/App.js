@@ -21,8 +21,8 @@ import Results from './components/tests/results';
 function App() {
   return (
     <div>
-      <HeaderTag path={history.location.pathname} />
       <Router >
+        <HeaderTag path={history.location.pathname} />
         {console.log(history.location.pathname)}
           <Switch>
             <Route exact path={ROUTES.BASE} component={HomePage} />

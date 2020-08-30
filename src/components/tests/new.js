@@ -1,15 +1,7 @@
 import React, { Component } from 'react'
 import { Divider, Form, Input, Row, Col, Space, Button, Radio } from 'antd';
 import axios from 'axios'
-
-const new_question = {
-  query: "",
-  correct_option: "1",
-  option_a: "",
-  option_b: "",
-  option_c: "",
-  option_d: "",
-}
+import * as ROUTES from '../../constants/routes';
 
 export class Index extends Component {
   constructor() {
@@ -31,7 +23,7 @@ export class Index extends Component {
     }
     const body = JSON.stringify(data)
     console.log(body)
-    axios.post("http://143d6d7c2dc5.ngrok.io/quizzes", data, { mode: 'no-cors' }
+    axios.post(ROUTES.API_URL+ "/quizzes", data, { mode: 'no-cors' }
     ).then(res => console.log(res)
     ).catch(err =>
       console.log(err)
@@ -39,6 +31,14 @@ export class Index extends Component {
   }
 
   appendQuestion() {
+    const new_question = {
+      query: "",
+      correct_option: "1",
+      option_a: "",
+      option_b: "",
+      option_c: "",
+      option_d: "",
+    }
     this.setState({
       name: this.state.name,
       questions: [...this.state.questions, new_question],

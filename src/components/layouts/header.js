@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Link } from 'antd';
+import { Layout, Menu } from 'antd';
+import { Link } from 'react-router-dom';
 
 import logo from '../../assets/img/beeready_icon.png';
 
@@ -17,13 +18,13 @@ export class HeaderTag extends Component {
                 <img src={logo}></img>
               </Menu.Item>
               <Menu.Item key="1">
-                <a href="/">Inicio</a>
+                <Link to="/">Inicio</Link>
               </Menu.Item>
               <Menu.Item key="2">
-                <a href="/tests">Exámenes</a>
+                <Link to="/tests">Exámenes</Link>
               </Menu.Item>
               <Menu.Item key="3">
-                <a href="/">ETC</a>
+                <Link to="/">ETC</Link>
               </Menu.Item>
             </Menu>
           </Header>
