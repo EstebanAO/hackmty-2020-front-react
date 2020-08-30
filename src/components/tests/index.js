@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import { Table, Space, Button, Row, Col } from 'antd';
 const fetch = require('node-fetch');
@@ -20,9 +21,7 @@ const columns = [
     key: 'action',
     render: (text, record) => (
       <Space size="middle">
-        <a href="">Comenzar</a>
-        <a href="">Crear</a>
-        <a href="">Eliminar</a>
+        <Link to="/lobby/{{record.id}}" style={{color: "#b87700"}}>Comenzar</Link>
       </Space>
     ),
   },
@@ -60,7 +59,7 @@ export class Index extends Component {
             </h1>
           </Col>
           <Col >
-            <Button href="/new_test" type="primary"> Crear </Button>
+            <Button href="/new_test" type="primary" style={{backgroundColor: "#ffb800", "border": "#b87700"}} size="large"> Crear </Button>
           </Col>
         </Row>
         <Table columns={columns} dataSource={this.state.data} />
