@@ -11,6 +11,8 @@ import HomePage from './components/home'
 import TestIndex from './components/tests'
 import TestShow from './components/tests/show'
 import HeaderTag from './components/layouts/header'
+import TestNew from './components/test_form'
+import Lobby from './components/tests/lobby'
 import TestNew from './components/tests/new'
 
 function App() {
@@ -24,6 +26,7 @@ function App() {
             <Route exact path={ROUTES.TEST_INDEX} component={TestIndex} />
             <Route exact path={ROUTES.TEST_SHOW} component={TestShow} />
             <Route exact path={ROUTES.TEST_NEW} component={TestNew} />
+            <Route exact path={ROUTES.TEST_LOBBY} component={Lobby} />
           </Switch>
         </Router>
     </div>
