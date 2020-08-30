@@ -3,7 +3,7 @@ import { Typography, Row, Col, Space } from 'antd'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
-import track1 from '../../assets/music/track1.mp3';
+import track1 from '../../assets/music/track2.mp3';
 
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
