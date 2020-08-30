@@ -31,9 +31,9 @@ export class Index extends Component {
     }
     const body = JSON.stringify(data)
     console.log(body)
-    axios.post("http://143d6d7c2dc5.ngrok.io/quizzes", data, {mode: 'no-cors'}
+    axios.post("http://143d6d7c2dc5.ngrok.io/quizzes", data, { mode: 'no-cors' }
     ).then(res => console.log(res)
-    ).catch(err => 
+    ).catch(err =>
       console.log(err)
     )
   }
@@ -80,10 +80,10 @@ export class Index extends Component {
         <>
           <Divider></Divider>
           <Row>
-            <Col span={1} offset={4}>
+            <Col span={2} offset={5}>
               Pregunta {i + 1}
             </Col>
-            <Col span={14}>
+            <Col span={13}>
               <Input.TextArea
                 size="medium"
                 placeholder="Escribe una pregunta"
@@ -93,8 +93,8 @@ export class Index extends Component {
               />
             </Col>
           </Row>
-          <Row>
-            <Col span={2} offset={4}>
+          <Row style={{marginTop: '15px'}}>
+            <Col span={2} offset={5}>
               Selecciona la respuesta
             </Col>
             <Col>
@@ -110,11 +110,11 @@ export class Index extends Component {
               </Radio.Group>
             </Col>
           </Row>
-          <Row>
-            <Col span={1} offset={4}>
+          <Row style={{marginTop: '15px'}}>
+            <Col span={2} offset={5}>
               Opción 1
             </Col>
-            <Col span={6}>
+            <Col span={5}>
               <Input
                 size="medium"
                 placeholder="Escribe una respuesta"
@@ -123,10 +123,10 @@ export class Index extends Component {
                 onChange={(event) => this.handleQuestion(event, i)}
               />
             </Col>
-            <Col span={1} offset={1}>
+            <Col span={2} offset={1}>
               Opción 2
             </Col>
-            <Col span={6}>
+            <Col span={5}>
               <Input
                 size="medium"
                 placeholder="Escribe una respuesta"
@@ -137,10 +137,10 @@ export class Index extends Component {
             </Col>
           </Row>
           <Row>
-            <Col span={1} offset={4}>
+            <Col span={2} offset={5}>
               Opción 3
             </Col>
-            <Col span={6}>
+            <Col span={5}>
               <Input
                 size="medium"
                 placeholder="Escribe una respuesta"
@@ -149,10 +149,10 @@ export class Index extends Component {
                 onChange={(event) => this.handleQuestion(event, i)}
               />
             </Col>
-            <Col span={1} offset={1}>
+            <Col span={2} offset={1}>
               Opción 4
             </Col>
-            <Col span={6}>
+            <Col span={5}>
               <Input
                 size="medium"
                 placeholder="Escribe una respuesta"
@@ -167,20 +167,25 @@ export class Index extends Component {
     })
     return (
       <>
+        <Row style={{margin: '15px'}}>
+          <h1>
+            Crear examen
+          </h1>
+        </Row>
         <Row>
           <Col offset={6} span={12}>
             <Input
               size="large"
-              placeholder="Nombre del cuestionario"
+              placeholder="Nombre del examen"
               name="name"
               value={this.state.name}
-              style={{marginTop: '10px'}}
+              style={{ marginTop: '10px' }}
               onChange={this.handleChange}
             />
           </Col>
         </Row>
-        <Row>
-          <Col span={6} offset={9}>
+        <Row style={{marginTop: '15px'}}>
+          <Col span={6} offset={11}>
             <Button
               onClick={this.appendQuestion}
             >
@@ -189,8 +194,8 @@ export class Index extends Component {
           </Col>
         </Row>
         {questions}
-        <Row>
-          <Col span={6} offset={9}>
+        <Row style={{marginTop: '30px', marginBottom: '15px'}}>
+          <Col span={6} offset={11}>
             <Button
               type="primary"
               onClick={this.uploadQuiz}

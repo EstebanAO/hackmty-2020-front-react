@@ -7,7 +7,7 @@ export class HeaderTag extends Component {
   render() {
     return (
       <div>
-        { ['leaderboard', 'lobby', 'winner'].includes(this.props.path.split('/')[1]) ? '' :  
+        { ['leaderboard', 'lobby', 'winner', 'question'].includes(this.props.path.split('/')[1]) ? '' :  
           <Header style={{zIndex: 1, width: '100%' }}>
             <div className="logo" />
             <Menu theme="dark" mode="horizontal">

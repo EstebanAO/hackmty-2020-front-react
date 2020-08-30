@@ -52,7 +52,7 @@ export class Index extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{margin:"30px"}}>
         <Row style={{margin: '15px'}}>
           <Col span={22} >
             <h1>
