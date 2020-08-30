@@ -39,19 +39,12 @@ export class Index extends Component {
   componentDidMount() {
     fetch(ROUTES.API_URL + '/quizzes', {
       method: 'GET',
-      headers: { },
-      mode: 'no-cors'
     }).
-    then(res => res.json()).
-    then(result => {
-      console.log(result)
-      // this.setState({data: 
-      //   data
-      // })
-    }).catch(function(err) {
-      console.error(err);
-      console.error("ABC");
-    });
+    then(res => {
+      return res.json();
+    }).
+    then(j => console.error(j)).
+    catch(err => console.error(err));
   }
 
   render() {
