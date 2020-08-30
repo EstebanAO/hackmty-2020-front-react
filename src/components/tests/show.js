@@ -3,27 +3,23 @@ import * as ROUTES from '../../constants/routes';
 import { Table, Space, Button, Divider, Row, Col } from 'antd';
 import Axios from 'axios'
 
-var dataaa = [{
-  "id": 1,
-  "name": "Estructura de Datos Parcial 1",
-  "professor_id": 1,
-  "created_at": "2020-08-29T19:41:08.631-02:00",
-  "updated_at": "2020-08-29T19:41:08.631-02:00",
-  "questions": [
-      {
-          "id": 1,
-          "query": "Cuantos Beagles hay en BeagleTown?",
-          "option_a": "10",
-          "option_b": "20",
-          "option_c": "30",
-          "option_d": "40",
-          "correct_option": "1",
-          "quiz_id": 1,
-          "created_at": "2020-08-29T19:41:08.649-02:00",
-          "updated_at": "2020-08-29T20:41:04.999-02:00"
-      }
-  ]
-}]
+const columns = [
+  {
+    title: 'Pregunta',
+    dataIndex: 'query',
+    key: 'query'
+  },
+  {
+    title: 'Action',
+    key: 'action',
+    render: (text, record) => (
+      <Space size="middle">
+        <a href="">Editar</a>
+        <a href="">Eliminar</a>
+      </Space>
+    ),
+  },
+];
 
 export class Show extends Component {
   constructor() {
@@ -34,35 +30,45 @@ export class Show extends Component {
   }
   
   componentDidMount() {
-    this.setState({data:
-      dataaa
-    })
-    Axios.get(ROUTES.API_URL + '/quizzes/' + this.props.match.params.id).
-    then(data => {
-      console.log(data)
-      this.setState({data:
-        data
-      })
+    console.log(this.state.data)
+    fetch(ROUTES.API_URL + '/quizzes/' + this.props.match.params.id, {
+      method: 'GET'
     }).
-    catch(err => {
-      console.log(err)
-    })
+    then(res => res.json()).
+    then((result) => {
+      this.setState({data: result})
+      console.log(result)
+    }).
+    catch(function(err) {
+      console.error(err);
+    });
   }
 
   render() {
     return (
-      <div>
+      <div style={{margin:"30px"}}>
         <Row>
-          <Col>
-          <a>
-          </a>
+          <Col span={22} >
+            <h1>
+              { this.state.data.name }
+            </h1>
+          </Col>
+          <Col >
+            <Button href="/new_test" type="primary"> Clasificación </Button>
           </Col>
         </Row>
-        <h1>
-          { typeof(this.state.data["0"]) != 'undefined' ? this.state.data["0"].name : ''}
-        </h1>
-        <h3>
 
+        <h3>
+          Profesor: { this.state.data.professor ? this.state.data.professor.name : '' }
+        </h3>
+        <h3>
+          Email: { this.state.data.professor ? this.state.data.professor.email : '' }
+        </h3>
+        <h2 style={{marginTop:"30px", marginBottom:"30px"}}>
+          Preguntas:
+        </h2>
+        <h3>
+          <Table columns={columns} dataSource={this.state.data.questions} />
         </h3>
       </div>
     )
