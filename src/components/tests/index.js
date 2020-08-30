@@ -52,9 +52,14 @@ export class Index extends Component {
 
   render() {
     return (
-      <div>
-        <Row style={{margin: '15px'}} orientation="right">
-          <Col offset = {22}>
+      <div style={{margin:"30px"}}>
+        <Row style={{margin: '15px'}}>
+          <Col span={22} >
+            <h1>
+               Exámenes
+            </h1>
+          </Col>
+          <Col >
             <Button href="/new_test" type="primary"> Crear </Button>
           </Col>
         </Row>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import { Row, Col, Button, Layout } from 'antd';
 import Axios from 'axios'
@@ -11,24 +12,20 @@ export class Lobby extends Component {
     constructor() {
       super()
       this.state = {
+        roomCode: 0,
         students: [],
-        studentsLength: 0
+        studentsLength: 0,
+        questionRedirect: "",
       }
     }
-    
-    componentDidMount() {
-        Axios.get(ROUTES.API_URL + '/quizzes/' + this.props.match.params.id).
+
+    loadStudents(id_) {
+        console.error("LOAD STUDENTS");
+        Axios.get(ROUTES.API_URL + '/quizzes/' + id_).
         then(data => {
             let studentsData = data.data.students;
             let students = []
             let i = 0;
-            studentsData = [
-                {username: "Alan"},
-                {username: "Esteban"},
-                {username: "Eduardo"},
-                {username: "Erick"},
-                {username: "René"},
-            ]
             for (i = 0; i < studentsData.length; i+=1) {
                 students.push(<Col
                     span={8}
@@ -39,7 +36,6 @@ export class Lobby extends Component {
                         "font-size": "3em"
                     }}>{ studentsData[i].username}</Col>);
             }
-            console.error(students);
             
             this.setState({
                 studentsList: [students],
@@ -48,7 +44,38 @@ export class Lobby extends Component {
         }).
         catch(err => {
             console.log(err)
+        })   
+    }
+    
+    componentDidMount() {
+        const data = {
+            "exam_id": 1,
+            "num_questions": 0,
+            "questions": [],
+        }
+
+        Axios.post(ROUTES.SERVER_URL + '/start', JSON.stringify(data), {
+            headers: {
+                // Overwrite Axios's automatically set Content-Type
+                'Content-Type': 'application/json'
+            }
+        }).then(data => {
+            this.setState({
+                roomCode: data.data.sms_id
+            })
+        }).catch(err => {
+            console.log(err)
         })
+
+        this.setState({
+            questionRedirect: '/question/' + this.props.match.params.id
+        })
+
+        this.loadStudents(this.props.match.params.id);
+        let comp = this;
+        setInterval(function(){
+            comp.loadStudents(comp.props.match.params.id);
+        }, 5000);
     }
 
     render() { return (
@@ -66,7 +93,7 @@ export class Lobby extends Component {
                             "padding-right": "2em",
                             "padding-top": "1.5em",
                             "padding-bottom": "1em"
-                        }}>¡Manda SMS o llama al <b style={{"color": "#ffb800"}}>+19142299068</b> ahora!</Col>
+                        }}>¡Manda SMS o llama al <b style={{"color": "#ffb800"}}>+19142299068</b> ahora usando el PIN <b style={{"color": "#ffb800", "font-size": "2em"}}>{ this.state.roomCode }</b>!</Col>
                     </Row>
                     <Row>
                         <Col span={24}>
@@ -75,7 +102,7 @@ export class Lobby extends Component {
                                     "textAlign": "center",
                                     "verticalAlign": "middle",
                                     "font-family": 'Questrial, sans-serif',
-                                    "font-size": "2em",
+                                    "font-size": "3em",
                                     "padding": "1em",
                                 }}>{ this.state.studentsLength } Jugadores</Col>
                                 <Col span={8} style={{
@@ -91,13 +118,17 @@ export class Lobby extends Component {
                                 <Col span={8} style={{
                                     "textAlign": "center",
                                     "padding": "2em"
-                                }}><Button type="primary" style={{
-                                    "textAlign": "center",
-                                    "verticalAlign": "middle",
-                                    "font-family": 'Questrial, sans-serif',
-                                    "font-size": "2em",
-                                    "height": "2em"
-                                }} block>¡Comenzar!</Button></Col>
+                                }}>
+                                    <Link to={this.state.questionRedirect}>
+                                        <Button type="primary" style={{
+                                            "textAlign": "center",
+                                            "verticalAlign": "middle",
+                                            "font-family": 'Questrial, sans-serif',
+                                            "font-size": "2em",
+                                            "height": "2em"
+                                        }} block>¡Comenzar!</Button>
+                                    </Link>
+                                </Col>
                             </Row>
                             <Row>
                                 { this.state.studentsList }

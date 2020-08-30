@@ -7,13 +7,19 @@ export class HeaderTag extends Component {
   render() {
     return (
       <div>
-        { ['leaderboard', 'lobby', 'winner'].includes(this.props.path.split('/')[1]) ? '' :  
+        { ['leaderboard', 'lobby', 'winner', 'question'].includes(this.props.path.split('/')[1]) ? '' :  
           <Header style={{zIndex: 1, width: '100%' }}>
             <div className="logo" />
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-              <Menu.Item key="1">Inicio</Menu.Item>
-              <Menu.Item key="2">Exámenes</Menu.Item>
-              <Menu.Item key="3">Profesores</Menu.Item>
+            <Menu theme="dark" mode="horizontal">
+              <Menu.Item key="1">
+                <a href="/">Inicio</a>
+              </Menu.Item>
+              <Menu.Item key="2">
+                <a href="/tests">Exámenes</a>
+              </Menu.Item>
+              <Menu.Item key="3">
+                <a href="/">ETC</a>
+              </Menu.Item>
             </Menu>
           </Header>
         }
