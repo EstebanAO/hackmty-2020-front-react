@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Typography, Row, Col, Space } from 'antd'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import { API_URL } from '../../constants/routes'
@@ -51,6 +52,8 @@ export class Question extends Component {
   constructor() {
     super()
     this.state = {
+      go_to_leaderboard: false,
+      is_test_done: false,
       countdown: 30,
       started_at_in_epoch: 0,
       query: "",
@@ -66,7 +69,14 @@ export class Question extends Component {
   componentDidMount() {
     const quiz_id = this.props.match.params.id
     axios.get(API_URL + '/quizzes/' + quiz_id + '/next_question').then(res => {
+      // Quiz is over
+      if (res.status === 204) {
+        this.setState({['is_test_done']: true})
+        return
+      }
       let data = res.data
+      data['go_to_leaderboard'] = false
+      data['is_test_done'] = false
       data['countdown'] = 30
       data['is_correct'] = [true, true, true, true]
       this.setState(data)
@@ -92,10 +102,23 @@ export class Question extends Component {
         is_correct.push(false)
       }
     }
+    setTimeout(() => {
+      this.setState({['go_to_leaderboard']: true})
+    }, 5000)
     this.setState({['is_correct']: is_correct})
   }
 
   render() {
+    if (this.state.go_to_leaderboard) {
+      return (
+        <Redirect to={'/leaderboard/' + this.props.match.params.id} />
+      )
+    }
+    if (this.state.is_test_done) {
+      return (
+        <Redirect to={'/winner/' + this.props.match.params.id} />
+      )
+    }
     return (
       <>
         <Row style={questionStyle}>
