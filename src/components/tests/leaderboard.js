@@ -1,20 +1,7 @@
 import React, { Component } from 'react'
-import { Card, Col, Row } from 'antd';
+import { Card, Col, Row, Button } from 'antd';
 import axios from 'axios'
 import * as ROUTES from '../../constants/routes';
-
-const columns = [
-  {
-    title: 'Nombre',
-    dataIndex: 'username',
-    key: 'name',
-  },
-  {
-    title: 'Puntaje',
-    dataIndex: 'total_points',
-    key: 'points',
-  },
-];
 
 export class Leaderboard extends Component {
   constructor() {
@@ -27,53 +14,7 @@ export class Leaderboard extends Component {
         '#00ff84',
         '#00a6ff'
       ],
-      students: [
-        {
-            "id": 5,
-            "username": "Rene",
-            "identifier": "+5218110801708",
-            "quiz_id": 1,
-            "total_points": 800,
-            "created_at": "2020-08-30T01:24:03.378Z",
-            "updated_at": "2020-08-30T01:24:35.659Z"
-        },
-        {
-            "id": 2,
-            "username": "Esteban",
-            "identifier": "+5218110801708",
-            "quiz_id": 1,
-            "total_points": 750,
-            "created_at": "2020-08-30T01:23:04.904Z",
-            "updated_at": "2020-08-30T01:23:31.823Z"
-        },
-        {
-          "id": 3,
-          "username": "Erick",
-          "identifier": "+5218110801708",
-          "quiz_id": 1,
-          "total_points": 700,
-          "created_at": "2020-08-30T01:23:04.904Z",
-          "updated_at": "2020-08-30T01:23:31.823Z"
-      },
-      {
-        "id": 4,
-        "username": "Eduardo",
-        "identifier": "+5218110801708",
-        "quiz_id": 1,
-        "total_points": 600,
-        "created_at": "2020-08-30T01:23:04.904Z",
-        "updated_at": "2020-08-30T01:23:31.823Z"
-    },
-    {
-      "id": 5,
-      "username": "Alan",
-      "identifier": "+5218110801708",
-      "quiz_id": 1,
-      "total_points": 500,
-      "created_at": "2020-08-30T01:23:04.904Z",
-      "updated_at": "2020-08-30T01:23:31.823Z"
-  }
-      ]
+      students: []
     }
   }
 
@@ -112,9 +53,17 @@ export class Leaderboard extends Component {
 
     return (
       <div>
-        <p style={{ textAlign:'center', fontSize: '400%', margin:'30px', fontFamily: 'Audiowide'}}>
-          Leaderboard
-        </p>
+        <Row align={"middle"}>
+          <Col offset={8} span={8}>
+            <p style={{ textAlign:'center', fontSize: '400%', margin:'30px', fontFamily: 'Audiowide'}}>
+              Leaderboard
+            </p>
+          </Col>
+          <Col offset={4} span={2} >
+            <Button href={"/question/" + this.props.match.params.id } type="primary" style={{ backgroundColor: "#ffb800", "border": "#b87700"}} size="large"> Siguiente </Button>
+          </Col>
+        </Row>
+        
         {students}
       </div>
     )
