@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Doughnut, Bar } from 'react-chartjs-2';
 import { Row, Col } from 'antd';
 
+import logo from '../../assets/img/beeready.png';
+
 const dataInternetConnection = {
 	labels: [
 		'Con televisión',
@@ -38,6 +40,9 @@ export class Index extends Component {
   render() {
     return (
       <div style={{margin:"30px"}}>
+        <Row style={{margin: '15px', "text-align": "center"}}>
+          <img src={logo} style={{width: "320px", "text-align": "center", "margin": "auto"}}></img>
+        </Row>
         <Row style={{margin: '15px'}}>
           <h1>
             Inicio
