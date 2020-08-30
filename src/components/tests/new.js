@@ -2,15 +2,6 @@ import React, { Component } from 'react'
 import { Divider, Form, Input, Row, Col, Space, Button, Radio } from 'antd';
 import axios from 'axios'
 
-const new_question = {
-  query: "",
-  correct_option: "1",
-  option_a: "",
-  option_b: "",
-  option_c: "",
-  option_d: "",
-}
-
 export class Index extends Component {
   constructor() {
     super()
@@ -39,6 +30,14 @@ export class Index extends Component {
   }
 
   appendQuestion() {
+    const new_question = {
+      query: "",
+      correct_option: "1",
+      option_a: "",
+      option_b: "",
+      option_c: "",
+      option_d: "",
+    }
     this.setState({
       name: this.state.name,
       questions: [...this.state.questions, new_question],
