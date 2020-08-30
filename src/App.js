@@ -10,7 +10,7 @@ import HomePage from './components/home'
 import TestIndex from './components/tests'
 import TestShow from './components/tests/show'
 import HeaderTag from './components/layouts/header'
-import TestNew from './components/test_form'
+import TestNew from './components/tests/new'
 
 
 
