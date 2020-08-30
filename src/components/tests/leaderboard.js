@@ -76,9 +76,16 @@ export class Leaderboard extends Component {
   }
 
   populateStudents() {
-    // axios.get(ROUTES.API_URL+ "/quizzes/" + this.state.quiz_id + "/leaderboard")
-    //   .then(res => this.setState({ students: res.data}))
-    //   .catch(err => console.log(err))
+    fetch(ROUTES.API_URL + 'quizzes/' + this.props.match.params.id + '/leaderboard', {
+      method: 'GET',
+    }).
+    then(res => res.json()).
+    then((result) => {
+      this.setState({ students: result.data.slice(0, 5)})
+    }).
+    catch(function(err) {
+        console.error(err);
+    })
   }
 
   render() {
