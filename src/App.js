@@ -4,8 +4,8 @@ import * as ROUTES from './constants/routes';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import history from './helpers/history'
 import { Layout, Menu, Link } from 'antd';
-import './App.css';
 import 'antd/dist/antd.css'
+import './App.css';
 
 import HomePage from './components/home'
 import TestIndex from './components/tests'
