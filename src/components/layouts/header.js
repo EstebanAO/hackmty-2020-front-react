@@ -8,9 +8,9 @@ export class HeaderTag extends Component {
     return (
       <div>
         { ['leaderboard', 'lobby', 'winner', 'question'].includes(this.props.path.split('/')[1]) ? '' :  
-          <Header style={{zIndex: 1, width: '100%' }}>
+          <Header style={{zIndex: 1, width: '100%', "background-color": "#1890ff"}}>
             <div className="logo" />
-            <Menu theme="dark" mode="horizontal">
+            <Menu theme="dark" mode="horizontal" style={{"background-color": "#1890ff"}}>
               <Menu.Item key="1">
                 <a href="/">Inicio</a>
               </Menu.Item>
