@@ -15,6 +15,7 @@ import Lobby from './components/tests/lobby'
 import TestNew from './components/tests/new'
 import TestLeaderboard from './components/tests/leaderboard'
 import Question from './components/tests/question'
+import Winner from './components/tests/winner';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route exact path={ROUTES.TEST_LEADERBOARD} component={TestLeaderboard} />
             <Route exact path={ROUTES.QUESTION} component={Question} />
             <Route exact path={ROUTES.TEST_LOBBY} component={Lobby} />
+            <Route exact path={ROUTES.WINNER} component={Winner} />
           </Switch>
         </Router>
     </div>
