@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Card, Col, Row, Button } from 'antd';
-import axios from 'axios'
 import * as ROUTES from '../../constants/routes';
 
 export class Leaderboard extends Component {
@@ -41,10 +40,10 @@ export class Leaderboard extends Component {
       return (
         <Row align={"middle"} justify={"center"}>
           <Card style={{ width: 700, textAlign:'center', margin:'10px', backgroundColor:this.state.colors[i]}}>
-          <Row align={"middle"} justify={"center"}>
-            <Col span={8} style={{textAlign:'left', fontWeight: "bold", fontSize: '200%', margin:"0px", fontFamily: 'Questrial'}}>{"#" + (i + 1) } </Col>
-            <Col span={8} style={{textAlign:'center', fontWeight: "bold", fontSize: '200%', margin:"0px", fontFamily: 'Questrial'}}>{s.username}</Col>
-            <Col span={8} style={{textAlign:'right', fontWeight: "bold", fontSize: '200%', margin:"0px", fontFamily: 'Questrial'}}>{s.total_points}</Col>
+            <Row align={"middle"} justify={"center"}>
+              <Col span={8} style={{textAlign:'left', fontWeight: "bold", fontSize: '200%', margin:"0px", fontFamily: 'Questrial'}}>{"#" + (i + 1) } </Col>
+              <Col span={8} style={{textAlign:'center', fontWeight: "bold", fontSize: '200%', margin:"0px", fontFamily: 'Questrial'}}>{s.username}</Col>
+              <Col span={8} style={{textAlign:'right', fontWeight: "bold", fontSize: '200%', margin:"0px", fontFamily: 'Questrial'}}>{s.total_points}</Col>
             </Row>
           </Card>
         </Row>
