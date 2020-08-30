@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Switch } from "react-router-dom"
+import * as ROUTES from './constants/routes';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Layout, Menu, Link } from 'antd';
 import './App.css';
 import 'antd/dist/antd.css'
 
 import HomePage from './components/home'
 import TestIndex from './components/tests'
+import TestShow from './components/tests/show'
 import HeaderTag from './components/layouts/header'
 
 
@@ -13,13 +16,14 @@ import HeaderTag from './components/layouts/header'
 function App() {
   return (
     <div>
-    <HeaderTag></HeaderTag>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/tests" component={TestIndex} />
-      </Switch> 
-    </Router>
+      <HeaderTag/>
+      <Router >
+          <Switch>
+            <Route exact path={ROUTES.BASE} component={HomePage} />
+            <Route exact path={ROUTES.TEST_INDEX} component={TestIndex} />
+            <Route exact path={ROUTES.TEST_SHOW} component={TestShow} />
+          </Switch>
+        </Router>
     </div>
     
   );

@@ -10,6 +10,7 @@
     "axios": "^0.20.0",
     "cors": "^2.8.5",
     "mdbreact": "^4.27.0",
+    "node-fetch": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
