@@ -20,6 +20,13 @@ export class Leaderboard extends Component {
   constructor() {
     super();
     this.state = {
+      colors: [
+        '#ffb800',
+        '#ffff00',
+        '#84ff00',
+        '#00ff84',
+        '#00a6ff'
+      ],
       students: [
         {
             "id": 5,
@@ -92,7 +99,7 @@ export class Leaderboard extends Component {
     const students = this.state.students.map((s, i) => {
       return (
         <Row align={"middle"} justify={"center"}>
-          <Card style={{ width: 700, textAlign:'center', margin:'10px', backgroundColor:'#ffb800'}}>
+          <Card style={{ width: 700, textAlign:'center', margin:'10px', backgroundColor:this.state.colors[i]}}>
           <Row align={"middle"} justify={"center"}>
             <Col span={8} style={{textAlign:'left', fontWeight: "bold", fontSize: '200%', margin:"0px", fontFamily: 'Questrial'}}>{"#" + (i + 1) } </Col>
             <Col span={8} style={{textAlign:'center', fontWeight: "bold", fontSize: '200%', margin:"0px", fontFamily: 'Questrial'}}>{s.username}</Col>
