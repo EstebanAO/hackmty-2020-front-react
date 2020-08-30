@@ -9,7 +9,7 @@ const columns = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: text => <a>{text}</a>,
+    render: text => <span>{text}</span>,
   },
   {
     title: 'Professor Id',
@@ -22,6 +22,7 @@ const columns = [
     render: (text, record) => (
       <Space size="middle">
         <Link to={'/lobby/' + record.id} style={{color: "#b87700"}}>Comenzar</Link>
+        <Link to={'/results/' + record.id}>Resultados</Link>
       </Space>
     ),
   },
