@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.6.1",
     "axios": "^0.20.0",
+    "confetti-js": "0.0.18",
     "cors": "^2.8.5",
     "d3": "^6.1.0",
     "d3-color": "^2.0.0",

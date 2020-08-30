@@ -16,12 +16,24 @@ export class Winner extends Component {
     constructor() {
         super()
         this.state = {
-          firstPlaceCols: 1,
-          secondPlaceCols: 1,
-          thirdPlaceCols: 1,
+            firstPlaceName: "1st Place",
+            secondPlaceName: "2nd Place",
+            thirdPlaceName: "3rd Place",
         }
       }
     componentDidMount() {
+        fetch(ROUTES.API_URL + '/quizzes/' + this.props.match.params.id + '/leaderboard', {
+            method: 'GET',
+        }).
+        then(res => res.json()).
+        then((result) => {
+            this.setState({data: result})
+            console.log(result)
+        }).
+        catch(function(err) {
+            console.error(err);
+        });
+
         const width = 600;
         const height = 300;
         const svg = d3.select("#winner-svg").append("svg")
@@ -33,9 +45,9 @@ export class Winner extends Component {
             .append("rect")
             .attr("fill", "gray")
             .attr("width", 0)
-            .attr("height", 100)
+            .attr("height", 50)
             .attr("x", 0)
-            .attr("y", pick1*100);
+            .attr("y", (pick1*100) + 25);
         const firstPlaceBee = svg
             .append('image')
             .attr('href', winnerBee)
@@ -43,6 +55,13 @@ export class Winner extends Component {
             .attr('height', 100)
             .attr("x", 0)
             .attr("y", pick1*100);
+        const firstPlaceText = svg
+            .append("text")
+            .attr("width", 0)
+            .attr("height", 50)
+            .attr("x", 0)
+            .attr("y", (pick1*100) + 25)
+            .text(this.state.firstPlaceName);
         
         let pick2 = Math.floor(Math.random() * 3);
         while (pick1 == pick2) {
@@ -52,17 +71,24 @@ export class Winner extends Component {
             .append("rect")
             .attr("fill", "gray")
             .attr("width", 0)
-            .attr("height", 100)
+            .attr("height", 50)
             .attr("x", 0)
-            .attr("y", pick2*100);
+            .attr("y", (pick2*100) + 25);
         const secondPlaceBee = svg
             .append('image')
             .attr('href', winnerBee)
-            .attr('width', 100)
-            .attr('height', 100)
+            .attr('width', 80)
+            .attr('height', 80)
             .attr("x", 0)
             .attr("y", pick2*100);
-        
+        const secondPlaceText = svg
+            .append("text")
+            .attr("width", 0)
+            .attr("height", 50)
+            .attr("x", 0)
+            .attr("y", (pick2*100) + 25)
+            .text(this.state.secondPlaceName);
+
         let pick3 = Math.floor(Math.random() * 3);
         while (pick3 == pick2 || pick3 == pick1) {
             pick3 = Math.floor(Math.random() * 3);
@@ -71,34 +97,41 @@ export class Winner extends Component {
             .append("rect")
             .attr("fill", "gray")
             .attr("width", 0)
-            .attr("height", 100)
+            .attr("height", 50)
             .attr("x", 0)
-            .attr("y", pick3 * 100);
+            .attr("y", (pick3 * 100) + 25);
         const thirdPlaceBee = svg
             .append('image')
             .attr('href', winnerBee)
-            .attr('width', 100)
-            .attr('height', 100)
+            .attr('width', 60)
+            .attr('height', 60)
             .attr("x", 0)
-            .attr("y", pick3*100);
+            .attr("y", (pick3*100)+15);
+        const thirdPlaceText = svg
+            .append("text")
+            .attr("width", 0)
+            .attr("height", 50)
+            .attr("x", 0)
+            .attr("y", (pick3*100) + 25)
+            .text(this.state.thirdPlaceName);
         
         firstPlaceRect
-            .transition().duration(3000).attr("width", 500)
+            .transition().duration(2000).attr("width", 500)
             .transition().duration(300).attr("fill", rgb(255, 0, 0, 1))
         firstPlaceBee
-            .transition().duration(3000).attr('x', 450)
+            .transition().duration(2000).attr('x', 450)
         
         secondPlaceRect
             .transition().duration(2000).attr("width", (500/3) * 2)
             .transition().duration(300).attr("fill", rgb(0, 255, 0, 1))
         secondPlaceBee
-            .transition().duration(2000).attr('x', ((500/3) * 2) - 50)
+            .transition().duration(2000).attr('x', ((500/3) * 2) - 20)
         
         thirdPlaceRect
-            .transition().duration(1000).attr("width", 500/3)
+            .transition().duration(2000).attr("width", 500/3)
             .transition().duration(300).attr("fill", rgb(0, 0, 255, 1))
         thirdPlaceBee
-            .transition().duration(1000).attr('x', ((500/3) * 1) - 50)
+            .transition().duration(2000).attr('x', ((500/3) * 1) - 40)
     }
 
     render() { return (
