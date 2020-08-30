@@ -6,3 +6,4 @@ export const TEST_LOBBY = '/lobby/:id';
 export const TEST_SHOW = '/tests/:id';
 export const TEST_NEW = '/new_test';
 export const QUESTION = '/question/:id';
+export const TEST_LEADERBOARD = '/tests/:id/leaderboard';
