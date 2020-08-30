@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Divider, Form, Input, Row, Col, Space, Button, Radio } from 'antd';
 import axios from 'axios'
+import * as ROUTES from '../../constants/routes';
 
 export class Index extends Component {
   constructor() {
@@ -22,7 +23,7 @@ export class Index extends Component {
     }
     const body = JSON.stringify(data)
     console.log(body)
-    axios.post("http://143d6d7c2dc5.ngrok.io/quizzes", data, { mode: 'no-cors' }
+    axios.post(ROUTES.API_URL+ "/quizzes", data, { mode: 'no-cors' }
     ).then(res => console.log(res)
     ).catch(err =>
       console.log(err)
