@@ -29,7 +29,7 @@ export class Leaderboard extends Component {
     }).
     then(res => res.json()).
     then((result) => {
-      this.setState({ students: result.data.slice(0, 5)})
+      this.setState({ students: result.slice(0, 5)})
     }).
     catch(function(err) {
         console.error(err);
