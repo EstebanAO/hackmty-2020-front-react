@@ -113,7 +113,7 @@ export class Lobby extends Component {
                             "padding-right": "2em",
                             "padding-top": "1.5em",
                             "padding-bottom": "1em"
-                        }}>¡Manda SMS o llama al <b style={{"color": "#ffb800"}}>+19142299068</b> ahora usando el PIN <b style={{"color": "#ffb800", "font-size": "2em"}}>{ this.state.roomCode }</b>!</Col>
+                        }}>¡Manda SMS o llama al <b style={{"color": "#ffb800"}}>+12566346605</b> ahora usando el PIN <b style={{"color": "#ffb800", "font-size": "2em"}}>{ this.state.roomCode }</b>!</Col>
                     </Row>
                     <Row>
                         <Col span={24}>
