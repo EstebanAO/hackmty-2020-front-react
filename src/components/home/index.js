@@ -44,7 +44,7 @@ export class Index extends Component {
           <img src={logo} style={{width: "320px", "text-align": "center", "margin": "auto"}}></img>
         </Row>
         <h2 style={{textAlign:'left', fontWeight: "bold", fontSize: '180%', margin:"15px", fontFamily: 'Questrial'}}>
-            * Al rededor de 2.5 milones de estudiantes abandonaron sus estudios el curso pasado y se estima que 4 millones de alumnos abandonarán sus estudios en este ciclo escolar.
+            * Alrededor de 2.5 millones de estudiantes abandonaron sus estudios el curso pasado y se estima que 4 millones de alumnos abandonarán sus estudios en este ciclo escolar.
         </h2>
         <h2 style={{textAlign:'left', fontWeight: "bold", fontSize: '180%', margin:"15px", fontFamily: 'Questrial'}}>
             * 16 millones de hogares  no cuentan con conexión a internet.
