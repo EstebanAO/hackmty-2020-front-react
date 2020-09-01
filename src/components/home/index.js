@@ -43,11 +43,6 @@ export class Index extends Component {
         <Row style={{margin: '15px', "text-align": "center"}}>
           <img src={logo} style={{width: "320px", "text-align": "center", "margin": "auto"}}></img>
         </Row>
-        <Row style={{margin: '15px'}}>
-          <h1>
-            Inicio
-          </h1>
-        </Row>
         <h2 style={{textAlign:'left', fontWeight: "bold", fontSize: '180%', margin:"15px", fontFamily: 'Questrial'}}>
             * Al rededor de 2.5 milones de estudiantes abandonaron sus estudios el curso pasado y se estima que 4 millones de alumnos abandonarán sus estudios en este ciclo escolar.
         </h2>
