@@ -68,7 +68,7 @@ export class Lobby extends Component {
                 "num_questions": data.data.questions.length,
                 "questions": [],
             }
-            Axios.post(ROUTES.SERVER_URL + 'start', request_data, {
+            return Axios.post(ROUTES.SERVER_URL + 'start', request_data, {
                 headers: {
                     // Overwrite Axios's automatically set Content-Type
                     'Content-Type': 'application/json'
