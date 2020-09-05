@@ -93,6 +93,7 @@ export class Lobby extends Component {
         <>
             <div style={{"display": "none"}}>
                 <AudioPlayer
+                    volume="0.1"
                     autoPlay
                     src={track1}
                     onPlay={e => console.log("onPlay")}

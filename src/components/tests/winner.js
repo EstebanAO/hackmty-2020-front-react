@@ -8,6 +8,11 @@ import Axios from 'axios'
 import logo from '../../assets/img/beeready.png';
 import winnerBee from '../../assets/img/beeready_winner.png'
 
+import track1 from '../../assets/music/track3.mp3';
+
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+
 import ConfettiGenerator from "confetti-js";
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -221,6 +226,16 @@ export class Winner extends Component {
 
     render() { return (
         <>
+            <div style={{"display": "none"}}>
+            <AudioPlayer
+                volume="0.1"
+                autoPlay
+                src={track1}
+                onPlay={e => console.log("onPlay")}
+                loop
+                // other props here
+            />
+            </div>
             <Link to="/tests/"><Button type="primary" size="large">Go To Home</Button></Link>
             <canvas id="my-canvas" style={{position: "absolute"}}></canvas>
             <div id="winner-svg"></div>
