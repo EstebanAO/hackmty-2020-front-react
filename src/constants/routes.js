@@ -1,5 +1,5 @@
-export const API_URL = 'https://9df040b533d9.ngrok.io';
-export const SERVER_URL = 'http://5241ad7761d8.ngrok.io/';
+export const API_URL = 'https://beeready-rails-api.herokuapp.com';
+export const SERVER_URL = 'https://beeready-flask.herokuapp.com/';
 export const BASE = '/';
 export const TEST_INDEX = '/tests/';
 export const TEST_LOBBY = '/lobby/:id';

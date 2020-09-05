@@ -53,23 +53,27 @@ export class Lobby extends Component {
     }
     
     componentDidMount() {
-        const data = {
-            "exam_id": this.props.match.params.id,
-            "num_questions": 0,
-            "questions": [],
-        }
+        const id = this.props.match.params.id
 
-        Axios.get(ROUTES.API_URL + '/quizzes/' + this.props.match.params.id + '/start').then(res => 
+        Axios.get(ROUTES.API_URL + '/quizzes/' + id + '/start').then(res => 
           console.log('Started quiz')
         ).catch(err =>
           console.log(err)
         )
 
-        Axios.post(ROUTES.SERVER_URL + 'start', JSON.stringify(data), {
-            headers: {
-                // Overwrite Axios's automatically set Content-Type
-                'Content-Type': 'application/json'
+        Axios.get(ROUTES.API_URL + '/quizzes/' + id).
+        then(data => {
+            const request_data = {
+                "exam_id": id,
+                "num_questions": data.data.questions.length,
+                "questions": [],
             }
+            return Axios.post(ROUTES.SERVER_URL + 'start', request_data, {
+                headers: {
+                    // Overwrite Axios's automatically set Content-Type
+                    'Content-Type': 'application/json'
+                }
+            })
         }).then(data => {
             this.setState({
                 ['roomCode']: data.data.sms_id
@@ -114,7 +118,7 @@ export class Lobby extends Component {
                             "padding-right": "2em",
                             "padding-top": "1.5em",
                             "padding-bottom": "1em"
-                        }}>¡Manda SMS o llama al <b style={{"color": "#ffb800"}}>+19142299068</b> ahora usando el PIN <b style={{"color": "#ffb800", "font-size": "2em"}}>{ this.state.roomCode }</b>!</Col>
+                        }}>¡Manda SMS al <b style={{"color": "#ffb800"}}>+52 554 999 8332</b> ahora usando el PIN <b style={{"color": "#ffb800", "font-size": "2em"}}>{ this.state.roomCode }</b>!</Col>
                     </Row>
                     <Row>
                         <Col span={24}>
